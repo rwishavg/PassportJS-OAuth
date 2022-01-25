@@ -2,6 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oidc');
 const dotenv = require("dotenv");
 const { func } = require('prop-types');
+
 dotenv.config({
   path: "./utils/config.env",
 });
