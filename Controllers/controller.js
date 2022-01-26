@@ -18,7 +18,8 @@ exports.addNewPost = async (req, res, next) => {
 
 exports.data = async (req, res, next) => {
     try{
-        res.send({"name":"John", "age":30, "car":null});
+        // console.log(req.user.displayName)
+        res.send(req.user);
     }catch(err){
         res.json(err);
     }

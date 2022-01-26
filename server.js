@@ -16,7 +16,23 @@ const passport = require("passport");
 const app = express();
 const url = process.env.MONGO 
 
+const { goog } = require("./Controllers/callback.js")
+
 app.use(cors());
+
+const whitelist = ["http://localhost:3000"]
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+  credentials: true,
+}
+app.use(cors(corsOptions))
+
 app.use(express.json());
 app.use(session({ secret: 'melody hensley is my spirit animal' }));
 app.use(passport.initialize())
@@ -26,16 +42,11 @@ mongoose.connect(url).then(()=>console.log("Connected to DB"))
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get('/auth/google', 
-    passport.authenticate('google', {scope: ['email', 'profile']})
+    passport.authenticate('google', {scope: ['email', 'profile'], failWithError: true})
   )
-  app.get('/google/callback', 
-    passport.authenticate('google', {
-      successRedirect: 'http://localhost:3000',
-      failureRedirect: 'http://localhost:3000/login',
-    })
-  )
+  app.get('/google/callback',  passport.authenticate('google', { failureRedirect: 'http://localhost:3000/login',}), goog)
+
   app.use('/api', apiRoutes)
-  
 }
 
 app.listen(process.env.PORT || 5000, () => {
