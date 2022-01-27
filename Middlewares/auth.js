@@ -17,7 +17,7 @@ passport.use(
 			passReqToCallback: true,
 		},
 		function (request, accessToken, refreshToken, profile, done) {
-			console.log(profile);
+			// console.log(profile._json.picture);
 			User.findOne({
 				googleID: profile.id
 			}).then((existingUser) => {
@@ -31,6 +31,8 @@ passport.use(
 						firstName: profile.given_name,
 						lastName: profile.family_name,
 						emailID: profile.email,
+						profileIMG: profile._json.picture,
+						username: profile.email,
 					}).save();
 					console.log('New User Created')
 				}

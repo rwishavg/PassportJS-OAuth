@@ -22,7 +22,7 @@ const userSchema = new Schema({
         required:true,
         unique:true
         },
-    Bio:{
+    bio:{
         type: String,
         default: '',
         required:false,
@@ -33,23 +33,12 @@ const userSchema = new Schema({
         required:false,
         unique: false,
         default:'',
+    },
+    username:{
+        type:String,
+        required:false,
+        unique: true
     }
-});
-
-
-testschema = mongoose.Schema({
-    name:{
-type:String,
-required:true,
-unique:true
-},
-image:{
-type:String,
-required:true
-},
-category:{
-type:String
-},
 });
 module.exports = mongoose.model('user', userSchema, 'userSchema');
 
