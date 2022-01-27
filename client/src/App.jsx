@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Form from './Components/Form'
 import './App.css';
 import axios from 'axios';
-import { set } from 'mongoose';
 // import Data from './Components/Data';
 function App() {
     const [state, setState] = useState({})
