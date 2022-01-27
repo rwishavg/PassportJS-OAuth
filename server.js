@@ -1,55 +1,65 @@
 const dotenv = require("dotenv");
 dotenv.config({
-  path: "./utils/config.env",
+	path: "./utils/config.env",
 });
 
 const apiRoutes = require("./Routes/api");
 const path = require("path");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const express = require("express");
-const session = require('cookie-session');
+const session = require("cookie-session");
 
 const cors = require("cors");
 const auth = require("./Middlewares/auth");
 const passport = require("passport");
 
 const app = express();
-const url = process.env.MONGO 
-
-const { goog } = require("./Controllers/callback.js")
+const url = process.env.MONGO;
+const { goog } = require("./Controllers/callback.js");
 
 app.use(cors());
 
-const whitelist = ["http://localhost:3000"]
+const whitelist = ["http://localhost:3000"];
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error("Not allowed by CORS"))
-    }
-  },
-  credentials: true,
-}
-app.use(cors(corsOptions))
+	origin: function (origin, callback) {
+		if (!origin || whitelist.indexOf(origin) !== -1) {
+			callback(null, true);
+		} else {
+			callback(new Error("Not allowed by CORS"));
+		}
+	},
+	credentials: true,
+};
+app.use(cors(corsOptions));
 
 app.use(express.json());
-app.use(session({ secret: 'melody hensley is my spirit animal' }));
-app.use(passport.initialize())
-app.use(passport.session())
-mongoose.connect(url).then(()=>console.log("Connected to DB"))
+app.use(session({ secret: "melody hensley is my spirit animal" }));
+app.use(passport.initialize());
+app.use(passport.session());
+mongoose.connect(url).then(() => console.log("Connected to DB"));
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  app.get('/auth/google', 
-    passport.authenticate('google', {scope: ['email', 'profile'], failWithError: true})
-  )
-  app.get('/google/callback',  passport.authenticate('google', { failureRedirect: 'http://localhost:3000/login',}), goog)
+	app.use(express.static("client/build"));
+	app.get(
+		"/auth/google",
+		passport.authenticate("google", {
+			scope: ["email", "profile"],
+			failWithError: true,
+		})
+	);
 
-  app.use('/api', apiRoutes)
+	
+	app.get(
+		"/google/callback",
+		passport.authenticate("google", {
+			failureRedirect: "http://localhost:3000/login",
+		}),
+		goog
+	);
+	app.use("/api", apiRoutes);
 }
 
 app.listen(process.env.PORT || 5000, () => {
-  console.log(process.env.PORT)
-  console.log(`Server running at port ${process.env.PORT}`);
+	console.log(process.env.PORT);
+	console.log(`Server running at port ${process.env.PORT}`);
 });
