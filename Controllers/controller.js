@@ -16,7 +16,7 @@ exports.addNewPost = async (req, res, next) => {
 
 exports.data = async (req, res, next) => {
 	try {
-		// console.log(req.user)
+		// console.log(req.user.authenticated)
 		res.send(req.user);
 	} catch (err) {
 		res.json(err);

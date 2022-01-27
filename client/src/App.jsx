@@ -5,6 +5,8 @@ import axios from 'axios';
 // import Data from './Components/Data';
 function App() {
     const [state, setState] = useState({})
+    const [isLoggedIn, setLogin] = useState(false)
+    const [imgLink, setImage] = useState('https://www.freecodecamp.org/news/content/images/size/w2000/2020/06/Slice-3-1-.png')
     useEffect(() => {
         // const url = "http://localhost:8000/api/data";
 
@@ -24,13 +26,24 @@ function App() {
         axios.get('http://localhost:8000/api/data', { withCredentials: true })
         .then(response => setState(response.data));
 
-    }, [])
+        console.log(state)
+        if(Object.keys(state).length === 0){
+            setLogin(false)
+        }
+        else{
+            setLogin(true)
+            setImage(state._json.picture)
+        }
+    }, [state])
     return (
         <>
             <div>
                 <Form />
                 {state.displayName}<br />
                 {state.id}
+                
+                <img src={imgLink}  alt="" />
+                    
             </div>        
         </>
     )
