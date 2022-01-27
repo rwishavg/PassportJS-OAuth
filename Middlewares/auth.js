@@ -28,7 +28,7 @@ passport.use(
 					new User({ 
 						googleID: profile.id,
 						firstName: profile.name.givenName,
-						lastName: profile.name.givenName,
+						lastName: profile.name.familyName,
 						emailID: profile.emails[0].value,
 					}).save();
 					console.log('New User Created')
