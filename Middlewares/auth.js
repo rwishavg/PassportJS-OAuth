@@ -1,5 +1,5 @@
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oidc").Strategy;
+const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const dotenv = require("dotenv");
 const { func } = require("prop-types");
 const User = require("../Models/newUser");
@@ -16,7 +16,8 @@ passport.use(
 			callbackURL: "http://localhost:8000/google/callback",
 			passReqToCallback: true,
 		},
-		function (request, issuer, profile, done) {
+		function (request, accessToken, refreshToken, profile, done) {
+			console.log(profile);
 			User.findOne({
 				googleID: profile.id
 			}).then((existingUser) => {
@@ -27,9 +28,9 @@ passport.use(
 					console.log('Does not Exist');
 					new User({ 
 						googleID: profile.id,
-						firstName: profile.name.givenName,
-						lastName: profile.name.familyName,
-						emailID: profile.emails[0].value,
+						firstName: profile.given_name,
+						lastName: profile.family_name,
+						emailID: profile.email,
 					}).save();
 					console.log('New User Created')
 				}
