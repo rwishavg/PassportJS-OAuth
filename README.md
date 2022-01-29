@@ -1,9 +1,8 @@
 <div align="center"> 
   <p align='center'> 
-   <img src="https://img.shields.io/badge/Name%20-%20Auth_Template-darkgreen?style=for-the-badge" /><br>
-   <img src="https://forthebadge.com/images/badges/built-with-love.svg" /><br>
-   <img src="https://img.shields.io/badge/By-Rwishav-red?style=for-the-badge" /><br>
-   <img src="https://img.shields.io/badge/By-Raghav-blue?style=for-the-badge" /><br>
+   <img src="https://img.shields.io/badge/Name%20-%20Auth_Template-darkgreen?style=for-the-badge" />
+   <img src="https://forthebadge.com/images/badges/built-with-love.svg" />
+   <img src="https://img.shields.io/badge/By-Rwishav+Raghav-red?style=for-the-badge" /><br>
    <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" />
     <br>
    <img src="https://img.shields.io/badge/License-MIT-yellow.svg?logo=Microsoft%20Word&style=for-the-badge" /><br>
