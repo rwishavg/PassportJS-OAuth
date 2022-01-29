@@ -44,9 +44,13 @@
    ```
    git clone https://github.com/rwishavg/PassportJS-OAuth.git  
    ```   
-
    ```
    npm install
+   ```
+   ```
+   cd client
+   npm install
+   npm run build
    ```
    ```
    Create: /utils/config.env
