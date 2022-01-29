@@ -25,7 +25,7 @@ function App() {
     
         // fetchData();
 
-        axios.get('http://localhost:8000/api/data', { withCredentials: true })
+        axios.get('/api/data', { withCredentials: true })
         .then(response => setState(response.data));
 
         console.log(state)

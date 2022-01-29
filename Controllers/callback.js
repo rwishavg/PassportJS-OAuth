@@ -1,7 +1,7 @@
 exports.goog = async (req, res, next) => {
     try{
         // console.log(req)
-        res.redirect('http://localhost:3000/');
+        res.redirect('/');
     }catch(err){
         res.json(err);
     }

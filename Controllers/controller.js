@@ -26,7 +26,7 @@ exports.data = async (req, res, next) => {
 exports.logout = async (req, res, next) => {
 	try {
 		req.logout()
-		res.redirect('http://localhost:3000/')
+		res.redirect('/')
 	} catch (err) {
 		res.json(err);
 	}
