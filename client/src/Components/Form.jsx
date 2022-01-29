@@ -4,11 +4,11 @@ function Submit() {
 
     return (
         <div>
-            <a href="http://localhost:8000/auth/google">
+            <a href="/auth/google">
                 <button>Sign In With Google</button>
             </a>
             <br />
-            <a href="http://localhost:8000/api/logout">
+            <a href="/api/logout">
                 <button>Logout</button>
             </a>
         </div>
