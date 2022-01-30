@@ -37,7 +37,7 @@ app.use(session({ secret: "melody hensley is my spirit animal" }));
 app.use(passport.initialize());
 app.use(passport.session());
 mongoose.connect(url).then(() => console.log("Connected to DB"));
-
+// app.use(express.static(path.join(__dirname, "Public")));
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
 	app.get(
@@ -57,6 +57,7 @@ if (process.env.NODE_ENV === "production") {
 		goog
 	);
 	app.use("/api", apiRoutes);
+	app.get('*', (req, res) => res.sendFile(path.resolve('client', 'build', 'index.html')));
 }
 
 app.listen(process.env.PORT || 5000, () => {

@@ -43,7 +43,7 @@ function App() {
             <div>
                 <BrowserRouter>
                 <Routes>
-                    <Route path="/form" element={<Form />}>
+                    <Route exact path="/form" element={<Form />}>
                     </Route>
                     </Routes>
                 </BrowserRouter>
