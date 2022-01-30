@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Form from './Components/Form'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import axios from 'axios';
 import profile from './assets/template.jpg'
@@ -40,7 +41,12 @@ function App() {
     return (
         <>
             <div>
-                <Form />
+                <BrowserRouter>
+                <Routes>
+                    <Route path="/form" element={<Form />}>
+                    </Route>
+                    </Routes>
+                </BrowserRouter>
                 {state.displayName}<br/>
                 {state.id}<br/>
                 <img style={{height: "100px", width:"100px"}} src={imgLink}  alt="" />
