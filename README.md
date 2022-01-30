@@ -2,7 +2,7 @@
   <p align='center'> 
    <img src="https://img.shields.io/badge/Name%20-%20Auth_Template-darkgreen?style=for-the-badge" />
    <img src="https://forthebadge.com/images/badges/built-with-love.svg" />
-   <img src="https://img.shields.io/badge/By-Rwishav-red?style=for-the-badge" /><br>
+   <img src="https://img.shields.io/badge/By-Rwishav+Raghav-red?style=for-the-badge" /><br>
    <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" />
     <br>
    <img src="https://img.shields.io/badge/License-MIT-yellow.svg?logo=Microsoft%20Word&style=for-the-badge" /><br>
@@ -51,8 +51,8 @@
    ```
    Create: /utils/config.env
    ```
-   ```
    Add the following in config.env:
+   ```
    PORT=
    MONGO=
    NODE_ENV=
@@ -108,6 +108,24 @@ Rwishav Ghosh
 </a>
 </p>
 </td>
+
+
+<td>
+
+Raghav Mathur
+
+<p align="center">
+<img src = "https://avatars.githubusercontent.com/raghavmathur1"  height="120" alt="Rwishav Ghosh">
+</p>
+<p align="center">
+<a href = "https://github.com/raghavmathur1">
+<img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
+<a href = "https://www.linkedin.com/in/raghavmathur1">
+<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36"/>
+</a>
+</p>
+</td>
+
 
 
 
